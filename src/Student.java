@@ -9,7 +9,7 @@ public class Student extends Person{
         super(user, pass);
     }//Student
 
-    public Student()
+    public Student(String)
 
     public boolean joinCourse(){
         return true;
