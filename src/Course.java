@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-
-public class Course {
+//
+public class Course{
     private String code, description;
     private ArrayList<Student> studentRoster = new ArrayList<Student>();
     private Teacher teacherInCharge;
@@ -51,5 +51,15 @@ public class Course {
             return false;
         }//if
     }//deleteStudent
+
+    public boolean equals(Course course){
+        if(course == null){
+            return false;
+        }
+        if(course.getCode() == this.getCode() && course.getDescription() == this.getDescription()){
+            return false;
+        }
+        return true;
+    }
 
 }//Course
