@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StudentFrame extends JFrame{
-    JButton backButton = new JButton("Back");
-    JButton registerButton = new JButton("Register Course");
-    JButton courseButton = new JButton("Course List");
+    private JButton backButton = new JButton("Back");
+    private JButton registerButton = new JButton("Register Course");
+    private JButton courseButton = new JButton("Course List");
 
     public StudentFrame(){
         this.setSize(420, 888);

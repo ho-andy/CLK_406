@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TeacherRosterFrame extends JFrame{
-    JButton backButton = new JButton("Back");
+    private JButton backButton = new JButton("Back");
 
     public TeacherRosterFrame(){
         this.setSize(420, 888);

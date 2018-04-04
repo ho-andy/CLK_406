@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TeacherAttendanceFrame extends JFrame{
-    JButton backButton = new JButton("Back");
+    private JButton backButton = new JButton("Back");
 
     public TeacherAttendanceFrame(){
         this.setSize(420, 888);

@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TeacherSessionFrame extends JFrame{
-    JButton backButton = new JButton("Back");
-    JButton questionButton = new JButton("Ask Question");
-    JButton attendanceButton = new JButton("Attendance");
-    JButton resultsButton = new JButton("Results");
+    private JButton backButton = new JButton("Back");
+    private JButton questionButton = new JButton("Ask Question");
+    private JButton attendanceButton = new JButton("Attendance");
+    private JButton resultsButton = new JButton("Results");
 
     public TeacherSessionFrame(){
         this.setSize(420, 888);
