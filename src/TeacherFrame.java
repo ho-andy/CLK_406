@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 public class TeacherFrame extends JFrame{
     JButton backButton = new JButton("Back");
+    JButton registerButton = new JButton("Register Course");
+    JButton courseButton = new JButton("Course List");
 
     public TeacherFrame(){
         this.setSize(420, 888);
@@ -13,6 +15,12 @@ public class TeacherFrame extends JFrame{
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
+
+        this.add(registerButton);
+        registerButton.addActionListener(new RegisterListener());
+
+        this.add(courseButton);
+        courseButton.addActionListener(new CourseListener());
     }
 
     public void closePanel(){
@@ -27,6 +35,28 @@ public class TeacherFrame extends JFrame{
             testerFrame.setVisible(true);
             testerFrame.setTitle("iPoll");
             testerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            closePanel();
+        }
+    }
+
+    class RegisterListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame teacherRegisterFrame = new TeacherRegisterFrame();
+            teacherRegisterFrame.setVisible(true);
+            teacherRegisterFrame.setTitle("Register Course");
+            teacherRegisterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            closePanel();
+        }
+    }
+
+    class CourseListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            teacherCourseFrame.setVisible(true);
+            teacherCourseFrame.setTitle("Course List");
+            teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
         }
     }
