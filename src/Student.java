@@ -35,7 +35,7 @@ public class Student extends Person{
     }
 
     public Socket joinSession(Course course) throws IOException {
-        String serverIP = course.getTeacherInCharge().getLocalIP();
+        String serverIP = course.getLocalIP();
         int serverPort = course.getCode().hashCode();
         Socket server = new Socket(serverIP, serverPort);
         return server;
@@ -46,14 +46,13 @@ public class Student extends Person{
         serverInput.println(message);
     }
 
-    public String recieveMessageFromSession(Socket server) throws IOException {
+    public String receiveMessageFromSession(Socket server) throws IOException {
         Scanner serverOutput = new Scanner(server.getInputStream());
         return serverOutput.nextLine();
     }
 
-    public void endSession(Socket server) throws IOException {
+    public void leaveSession(Socket server) throws IOException {
         server.close();
     }
-
 
 }//Student
