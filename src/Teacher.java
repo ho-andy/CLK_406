@@ -1,15 +1,14 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 //
 public class Teacher extends Person
 {
     private ArrayList<Course> coursesTaught = new ArrayList<Course>();
-    private String localIP;
 
-    public Teacher(String user, String pass, String localIP) {
+    public Teacher(String user, String pass) {
         super(user, pass);
-        this.localIP = localIP;
     }//Teacher
 
     public boolean addCourse(Course newCourse){
@@ -42,16 +41,25 @@ public class Teacher extends Person
         return true;
     }
 
-    public void setLocalIP() throws UnknownHostException {
-        localIP = InetAddress.getLocalHost().toString();
+    public Socket createSession(Course course) throws IOException {
+        int serverPort = course.getCode().hashCode();
+        ServerSocket serverSocketPort = new ServerSocket(serverPort);
+        Socket server = serverPort.accept();
+        return server;
     }
 
-    public void setLocalIP(String newIP){
-        localIP = newIP;
+    public void endSession(Socket server) throws IOException {
+        server.close();
     }
 
-    public String getLocalIP(){
-        return localIP;
+    public void sendMessageThroughSession(Socket server, String message) throws IOException {
+        PrintStream serverOutput = new PrintStream(server.getOutputStream());
+        serverOutput.println(message);
+    }
+
+    public String receiveMessageThroughSession(Socket server) throws IOException {
+        Scanner serverInput = new Scanner(server.getInputStream());
+        return serverInput.nextLine();
     }
 
 }//Teacher
