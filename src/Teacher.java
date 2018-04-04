@@ -44,8 +44,8 @@ public class Teacher extends Person
     public Socket createSession(Course course) throws IOException {
         int serverPort = course.getCode().hashCode();
         ServerSocket serverSocketPort = new ServerSocket(serverPort);
-        Socket server = serverPort.accept();
-        return server;
+        //Socket server = serverPort.accept();
+        return null;
     }
 
     public void endSession(Socket server) throws IOException {
