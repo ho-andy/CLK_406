@@ -1,7 +1,6 @@
 public class Person {
 
     private String userName, password;
-    //char personType;
 
     /**
      * Basic constructor for the Person Class
