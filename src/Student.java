@@ -8,5 +8,9 @@ public class Student extends Person{
         super(user, pass);
     }//Student
 
+    public boolean joinCourse(){
+        return true;
+    }
+
 
 }//Student
