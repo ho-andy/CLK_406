@@ -1,11 +1,15 @@
 import java.util.ArrayList;
+import java.io.*;
+import java.net.*;
 //
 public class Teacher extends Person
 {
     private ArrayList<Course> coursesTaught = new ArrayList<Course>();
+    private String localIP;
 
-    public Teacher(String user, String pass) {
+    public Teacher(String user, String pass, String localIP) {
         super(user, pass);
+        this.localIP = localIP;
     }//Teacher
 
     public boolean addCourse(Course newCourse){
@@ -36,6 +40,18 @@ public class Teacher extends Person
 
     public boolean deleteStudentFromRoster(Student student){
         return true;
+    }
+
+    public void setLocalIP() throws UnknownHostException {
+        localIP = InetAddress.getLocalHost().toString();
+    }
+
+    public void setLocalIP(String newIP){
+        localIP = newIP;
+    }
+
+    public String getLocalIP(){
+        return localIP;
     }
 
 }//Teacher
