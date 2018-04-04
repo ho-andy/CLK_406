@@ -1,7 +1,10 @@
+import javax.swing.*;
+
 public class PollViewer {
-    public static void main(String args[]){
-        System.out.println("Hello World");
-        System.out.println("David is a beautiful person!");
-        System.out.println("Brian is a beautiful weeb! (and so am I)");
+    public static void main(String[] args){
+        JFrame mainFrame = new MainFrame();
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setTitle("iPoll");
+        mainFrame.setVisible(true);
     }
 }
