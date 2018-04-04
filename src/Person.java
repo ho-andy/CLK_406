@@ -4,6 +4,16 @@ public class Person {
     //char personType;
 
     /**
+     * Basic constructor for the Person Class
+     * @param user Initialize userName
+     * @param pass Initialize password
+     */
+    public Person(String user, String pass){
+        userName = user;
+        password = pass;
+    }//Person
+
+    /**
      * Simple getter method for the userName variable.
      * @return userName
      */
