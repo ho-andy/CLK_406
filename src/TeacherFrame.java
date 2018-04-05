@@ -3,14 +3,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StudentFrame extends JFrame{
+public class TeacherFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
 
-    public StudentFrame(){
+    public TeacherFrame(){
         this.setSize(420, 888);
         this.setLayout(new FlowLayout());
+
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -41,10 +42,10 @@ public class StudentFrame extends JFrame{
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame registerFrame = new StudentRegisterFrame();
-            registerFrame.setVisible(true);
-            registerFrame.setTitle("Register Course");
-            registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JFrame teacherRegisterFrame = new TeacherRegisterFrame();
+            teacherRegisterFrame.setVisible(true);
+            teacherRegisterFrame.setTitle("Register Course");
+            teacherRegisterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
         }
     }
@@ -52,10 +53,10 @@ public class StudentFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame courseFrame = new StudentCourseFrame();
-            courseFrame.setVisible(true);
-            courseFrame.setTitle("Course List");
-            courseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            teacherCourseFrame.setVisible(true);
+            teacherCourseFrame.setTitle("Course List");
+            teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
         }
     }
