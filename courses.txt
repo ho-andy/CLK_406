@@ -1,4 +1,4 @@
-CPS420#192.168.1.1#Taya.Sanderson
+CPS420#192.168.1.1#Taya.Sanderson#20#40#40
 Ming.Lee#99888777#s
 Dante.Ahn#32154545#s
 Felix.Sampson#56456456#s
@@ -6,7 +6,7 @@ William.Wong#64354534#s
 Cassandra.Walter#564564545#s
 Emily.Ferrel#12331233#s
 ?
-CPS590#192.168.1.1#Denise.Woit
+CPS590#192.168.1.1#Denise.Woit#30#20#50
 Ming.Lee#99888777#s
 Dante.Ahn#32154545#s
 Felix.Sampson#56456456#s
@@ -14,7 +14,7 @@ William.Wong#64354534#s
 Cassandra.Walter#564564545#s
 Emily.Ferrel#12331233#s
 ?
-CPS109#192.168.1.1#Kosta.Derpanis
+CPS109#192.168.1.1#Kosta.Derpanis#15#15#25#45
 Ming.Lee#99888777#s
 Dante.Ahn#32154545#s
 Felix.Sampson#56456456#s
