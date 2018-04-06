@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class TeacherQuestionFrame extends JFrame{
     private JTextArea qField = new JTextArea(3,35);
@@ -20,7 +24,7 @@ public class TeacherQuestionFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
     private Poll poll;
-    private Person loggedIn;
+    private Question q;
 
     public TeacherQuestionFrame(){
         this.setSize(420, 747);
@@ -42,7 +46,7 @@ public class TeacherQuestionFrame extends JFrame{
         backButton.addActionListener(new BackListener());
     }
 
-    public TeacherQuestionFrame(Person person){
+    public TeacherQuestionFrame(Poll poll){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
@@ -62,30 +66,6 @@ public class TeacherQuestionFrame extends JFrame{
         this.add(backButton);
         backButton.addActionListener(new BackListener());
 
-        this.loggedIn = person;
-    }
-
-    public TeacherQuestionFrame(Person person, Poll poll){
-        this.setSize(420, 747);
-        this.setLayout(new FlowLayout());
-
-        this.add(qLabel);
-        this.add(qField);
-        this.add(corrLabel);
-        this.add(corrField);
-        this.add(altLabelOne);
-        this.add(altFieldOne);
-        this.add(altLabelTwo);
-        this.add(altFieldTwo);
-        this.add(altLabelThree);
-        this.add(altFieldThree);
-        this.add(addButton);
-        addButton.addActionListener(new AddListener());
-
-        this.add(backButton);
-        backButton.addActionListener(new BackListener());
-
-        this.loggedIn = person;
         this.poll = poll;
     }
 
@@ -96,7 +76,7 @@ public class TeacherQuestionFrame extends JFrame{
 
     public void addQuestion()
     {
-        Question q = new Question(qField.getText(),corrField.getText());
+        q = new Question(qField.getText(),corrField.getText());
         q.addAnswer(altFieldOne.getText(),false);
         q.addAnswer(altFieldTwo.getText(),false);
         q.addAnswer(altFieldThree.getText(),false);
@@ -107,7 +87,7 @@ public class TeacherQuestionFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherSessionFrame = new TeacherSessionFrame(loggedIn, poll);
+            JFrame teacherSessionFrame = new TeacherSessionFrame(poll);
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,6 +99,21 @@ public class TeacherQuestionFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             addQuestion();
+            Socket session = Currents.SERVER;
+            try {
+                Random r = new Random();
+                ArrayList<Integer> order = new ArrayList<Integer>();
+                while(order.size()<4){
+                    int rand = r.nextInt(3)+1;
+                    if(!order.contains(rand))
+                        order.add(rand);
+                }
+                Currents.TEACHER.sendMessageThroughSession(session, q.getQuestion());
+                for(int i:order)
+                    Currents.TEACHER.sendMessageThroughSession(session, q.getAnswer(i));
+            }catch(IOException exc){
+                exc.printStackTrace();
+            }
             JFrame teacherSessionFrame = new TeacherSessionFrame(poll);
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");

@@ -29,7 +29,7 @@ public class Question
 
     public String getAnswer(int i)
     {
-        if(i <= 5)
+        if(i <= 4)
             return this.answerList.get(i-1).getAnswer();
         return null;
     }

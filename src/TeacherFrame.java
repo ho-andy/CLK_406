@@ -1,5 +1,3 @@
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +8,6 @@ public class TeacherFrame extends JFrame{
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
 
-    private Person loggedIn;
 
     public TeacherFrame(){
         this.setSize(420, 747);
@@ -39,7 +36,8 @@ public class TeacherFrame extends JFrame{
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
 
-        loggedIn = person;
+        Currents.TEACHER = new Teacher(person.getUserName(), person.getPassword());
+        //Current.COURSE =
     }
 
     public void closePanel(){
@@ -61,7 +59,7 @@ public class TeacherFrame extends JFrame{
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherRegisterFrame = new TeacherRegisterFrame(loggedIn);
+            JFrame teacherRegisterFrame = new TeacherRegisterFrame();
             teacherRegisterFrame.setVisible(true);
             teacherRegisterFrame.setTitle("Register Course");
             teacherRegisterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +70,7 @@ public class TeacherFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame(loggedIn);
+            JFrame teacherCourseFrame = new TeacherCourseFrame();
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
