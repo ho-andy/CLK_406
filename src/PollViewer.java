@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PollViewer {
+
     public static void main(String[] args){
         openDatabase();
         JFrame mainFrame = new MainFrame();
@@ -14,18 +15,32 @@ public class PollViewer {
     }
 
     public static void openDatabase(){
-        try{
-            Scanner scanner = new Scanner(new File("roster.txt")).useDelimiter("\n");
-        } catch (FileNotFoundException e){
-            System.err.println("File not found");
-            System.exit(0);
-        }
+        String fieldDelimiter = "#";
+        String fileName = "roster.txt";
+        String currentLine;
 
         ArrayList<Person> database = new ArrayList<>();
-        //while(scanner.hasNextLine()){
+        String[] person;
+        Person newPerson;
 
-        //}
+        Scanner scanner;
 
+        try{
+            scanner = new Scanner(new File(fileName));
+
+            while(scanner.hasNext()){
+                currentLine = scanner.nextLine();
+                person = currentLine.split(fieldDelimiter);
+                newPerson = new Person(person[0], person[1], person[2].charAt(0));
+                database.add(newPerson);
+
+                System.out.println(newPerson);
+            }
+
+        } catch (FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Error in reading file", "Error", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
 
     }
 }

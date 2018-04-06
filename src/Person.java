@@ -59,4 +59,8 @@ public class Person {
         personType = newType;
     }
 
+    public String toString(){
+        return getUserName() + " " + getPassword() + " " + getPersonType();
+    }
+
 }//Person

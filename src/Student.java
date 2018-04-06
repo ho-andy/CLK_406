@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Student extends Person{
     private ArrayList<Course> coursesEnrolled = new ArrayList<Course>();
     private ArrayList<String> currentResults = new ArrayList<String>();
+    private boolean inAttendance = false;
 
     public Student(String user, String pass){
         super(user, pass);
@@ -54,5 +55,6 @@ public class Student extends Person{
     public void leaveSession(Socket server) throws IOException {
         server.close();
     }
+
 
 }//Student
