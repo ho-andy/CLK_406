@@ -17,7 +17,7 @@ public class Database {
     private void openCourseDatabase() {
         String coursesFileName = "courses.txt";
         String fieldDelimiter = "#";
-        char lineDelimiter = '?';
+        String lineDelimiter = "?";
         String currentLine;
         String[] course, person;
 
@@ -52,18 +52,24 @@ public class Database {
                 }
 
                 newCourse = new Course(course[0], teacherInCharge, course[1], courseWeights);
-                System.out.println(newCourse);
 
+                currentLine = scanner.nextLine();
                 //PARSING STUDENT ROSTER
-                while(currentLine.charAt(0) != lineDelimiter){
-                    currentLine = scanner.nextLine();
+                while(!currentLine.equals(lineDelimiter)){
                     person = currentLine.split(fieldDelimiter);
                     newStudent = new Student(person[0], person[1]);
                     currentRoster.add(newStudent);
-                }//while
+                    currentLine = scanner.nextLine();
+                }
 
                 newCourse.setStudentRoster(currentRoster);
                 courseDatabase.add(newCourse);
+
+                currentFields.clear();
+                courseWeights.clear();
+                currentRoster.clear();
+
+                System.out.println(newCourse);
 
             }//while
 
