@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainFrame extends JFrame{
-    private ArrayList<Person> database = new ArrayList<>();
+    public ArrayList<Person> database = new ArrayList<>();
+
     private JLabel userLabel = new JLabel("Username");
     private JTextField userField = new JTextField(35);
     private JLabel passLabel = new JLabel("Password");
@@ -55,7 +56,7 @@ public class MainFrame extends JFrame{
                     if (aPerson.getPersonType() == 's') {
                         badUser = false;
 
-                        JFrame studentFrame = new StudentFrame();
+                        JFrame studentFrame = new StudentFrame(MainFrame.this);
                         studentFrame.setVisible(true);
                         studentFrame.setTitle("Student");
                         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +64,7 @@ public class MainFrame extends JFrame{
                     } else if (aPerson.getPersonType() == 't') {
                         badUser = false;
 
-                        JFrame teacherFrame = new TeacherFrame();
+                        JFrame teacherFrame = new TeacherFrame(MainFrame.this);
                         teacherFrame.setVisible(true);
                         teacherFrame.setTitle("Teacher");
                         teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,10 +106,14 @@ public class MainFrame extends JFrame{
         }
     }
 
+    public ArrayList<Person> getDatabase(){
+        return this.database;
+    }
+
     class TeacherListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherFrame = new TeacherFrame();
+            JFrame teacherFrame = new TeacherFrame(MainFrame.this);
             teacherFrame.setVisible(true);
             teacherFrame.setTitle("Teacher");
             teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,7 +123,7 @@ public class MainFrame extends JFrame{
     class StudentListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame studentFrame = new StudentFrame();
+            JFrame studentFrame = new StudentFrame(MainFrame.this);
             studentFrame.setVisible(true);
             studentFrame.setTitle("Student");
             studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
