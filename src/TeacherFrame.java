@@ -1,3 +1,5 @@
+import sun.applet.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,9 +10,12 @@ public class TeacherFrame extends JFrame{
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
 
-    public TeacherFrame(){
+    private MainFrame mainFrame;
+
+    public TeacherFrame(MainFrame mainFrame){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
+        this.mainFrame = mainFrame;
 
 
         this.add(backButton);
@@ -42,7 +47,7 @@ public class TeacherFrame extends JFrame{
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherRegisterFrame = new TeacherRegisterFrame();
+            JFrame teacherRegisterFrame = new TeacherRegisterFrame(mainFrame);
             teacherRegisterFrame.setVisible(true);
             teacherRegisterFrame.setTitle("Register Course");
             teacherRegisterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +58,7 @@ public class TeacherFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            JFrame teacherCourseFrame = new TeacherCourseFrame(mainFrame);
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
