@@ -23,6 +23,9 @@ public class Database {
                     }
                 }
                 personDatabase.set(i, temporary);
+            }else if(personDatabase.get(i).getPersonType() == 's'){
+                Student temporary = new Student(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
+                personDatabase.set(i, temporary);
             }
         }
     }
