@@ -3,15 +3,14 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 //
 public class Course{
-    private String code, description;
+    private String code;
     private ArrayList<Student> studentRoster = new ArrayList<Student>();
     private Teacher teacherInCharge;
     private String serverIP;
     private ArrayList<Integer> courseWeights;
 
-    public Course(String code, String description, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights){
+    public Course(String code, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights){
         this.code = code;
-        this.description = description;
         this.teacherInCharge = teacherInCharge;
         this.serverIP = serverIP;
         this.courseWeights = courseWeights;
@@ -20,10 +19,6 @@ public class Course{
     public String getCode(){
         return code;
     }//getCode
-
-    public String getDescription(){
-        return description;
-    }//getDescription
 
     public Teacher getTeacherInCharge() {
         return teacherInCharge;
@@ -37,10 +32,6 @@ public class Course{
         code = newCode;
     }//setCode
 
-    public void setDescription(String newDescription){
-        description = newDescription;
-    }//setDescription
-
     public void setTeacherInCharge(Teacher newTeacher){
         teacherInCharge = newTeacher;
     }//setTeacherInCharge
@@ -48,6 +39,10 @@ public class Course{
     public void setCourseWeights(ArrayList<Integer> newCourseWeights){
         courseWeights = newCourseWeights;
     }//setCourseWeights
+
+    public void setStudentRoster(ArrayList<Student> newRoster){
+        studentRoster = newRoster;
+    }
 
     public boolean addStudent(Student newStudent){
         if(!studentRoster.contains(newStudent)){
@@ -70,7 +65,7 @@ public class Course{
         if(course == null){
             return false;
         }
-        if(course.getCode() == this.getCode() && course.getDescription() == this.getDescription()){
+        if(course.getCode() == this.getCode()){
             return false;
         }
         return true;
@@ -86,6 +81,10 @@ public class Course{
 
     public String getLocalIP(){
         return serverIP;
+    }
+
+    public String toString(){
+        return getCode() + " " + getTeacherInCharge() + " " + studentRoster.toString();
     }
 
 }//Course
