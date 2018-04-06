@@ -1,5 +1,3 @@
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +7,8 @@ public class StudentFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
+
+    private Person loggedIn;
 
     public StudentFrame(){
         this.setSize(420, 747);
@@ -22,6 +22,21 @@ public class StudentFrame extends JFrame{
 
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
+    }
+
+    public StudentFrame(Person person){
+        this.setSize(420, 747);
+        this.setLayout(new FlowLayout());
+
+        this.add(backButton);
+        backButton.addActionListener(new BackListener());
+        this.add(registerButton);
+        registerButton.addActionListener(new RegisterListener());
+        this.add(courseButton);
+        courseButton.addActionListener(new CourseListener());
+
+        loggedIn = person;
+        System.out.println(loggedIn);
     }
 
     public void closePanel(){
@@ -43,7 +58,7 @@ public class StudentFrame extends JFrame{
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame registerFrame = new StudentRegisterFrame();
+            JFrame registerFrame = new StudentRegisterFrame(loggedIn);
             registerFrame.setVisible(true);
             registerFrame.setTitle("Register Course");
             registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +69,7 @@ public class StudentFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame courseFrame = new StudentCourseFrame();
+            JFrame courseFrame = new StudentCourseFrame(loggedIn);
             courseFrame.setVisible(true);
             courseFrame.setTitle("Course List");
             courseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

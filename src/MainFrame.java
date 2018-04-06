@@ -50,12 +50,10 @@ public class MainFrame extends JFrame{
             boolean badUser = true;
 
             for (Person aPerson : roster) {
-                System.out.println(aPerson);
                 if (aPerson.getUserName().toLowerCase().equals(username) && aPerson.getPassword().equals(password)) {
                     if (aPerson.getPersonType() == 's') {
                         badUser = false;
-
-                        JFrame studentFrame = new StudentFrame();
+                        JFrame studentFrame = new StudentFrame(aPerson);
                         studentFrame.setVisible(true);
                         studentFrame.setTitle("Student");
                         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
     private ArrayList<Course> courseDatabase = new ArrayList<>();
-    private Poll poll;
 
     public Database(){
         openPersonDatabase();
@@ -57,13 +56,5 @@ public class Database {
 
     public void setCourseDatabase(ArrayList<Course> courseDatabase) {
         this.courseDatabase = courseDatabase;
-    }
-
-    public Poll getPoll() {
-        return poll;
-    }
-
-    public void setPoll(Poll poll) {
-        this.poll = poll;
     }
 }
