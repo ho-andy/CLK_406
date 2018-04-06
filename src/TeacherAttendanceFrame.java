@@ -34,7 +34,7 @@ public class TeacherAttendanceFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherSessionFrame = new TeacherSessionFrame(loggedIn);
+            JFrame teacherSessionFrame = new TeacherSessionFrame();
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
