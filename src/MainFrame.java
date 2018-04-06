@@ -38,12 +38,12 @@ public class MainFrame extends JFrame{
     class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String username = userField.getText();
+            String username = userField.getText().toLowerCase();
             String password = passField.getText();
             boolean badUser = true;
 
             for (Person aPerson : database) {
-                if (aPerson.getUserName().equals(username) && aPerson.getPassword().equals(password)) {
+                if (aPerson.getUserName().toLowerCase().equals(username) && aPerson.getPassword().equals(password)) {
                     if (aPerson.getPersonType() == 's') {
                         badUser = false;
 
