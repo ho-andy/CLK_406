@@ -2,11 +2,12 @@ import java.util.ArrayList;
 
 public class Question
 {
-    private String question;
+    private String question,correct;
     private ArrayList<Answer> answerList = new ArrayList<>();
 
     public Question(String question, String correctAnswer){
         this.question = question;
+        this.correct = correctAnswer;
         answerList.add(new Answer(correctAnswer, true));
     }
 
@@ -23,11 +24,13 @@ public class Question
     }
 
     public String getCorrectAnswer(){
-        for(int i = 0; i < answerList.size(); i++){
-            if(answerList.get(i).isCorrect()){
-                return answerList.get(i).getAnswer();
-            }
-        }
-        return "";
+        return correct;
+    }
+
+    public String getAnswer(int i)
+    {
+        if(i <= 4)
+            return this.answerList.get(i-1).getAnswer();
+        return null;
     }
 }

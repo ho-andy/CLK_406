@@ -23,4 +23,8 @@ public class Poll
     {
         return pollName;
     }
+    public Question getQuestion(int i)
+    {
+        return this.poll.get(i-1);
+    }
 }
