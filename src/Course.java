@@ -44,6 +44,10 @@ public class Course{
         studentRoster = newRoster;
     }
 
+    public ArrayList<Student> getStudentRoster() {
+        return studentRoster;
+    }
+
     public boolean addStudent(Student newStudent){
         if(!studentRoster.contains(newStudent)){
             return true;
@@ -84,7 +88,7 @@ public class Course{
     }
 
     public String toString(){
-        return getCode() + " " + getTeacherInCharge() + " " + studentRoster.toString();
+        return getCode() + " " + getTeacherInCharge() + " " + getStudentRoster();
     }
 
 }//Course

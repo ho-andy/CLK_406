@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//String code, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
     private ArrayList<Course> courseDatabase = new ArrayList<>();
@@ -12,12 +12,24 @@ public class Database {
     public Database(){
         openPersonDatabase();
         openCourseDatabase();
+
+        for(int i = 0; i < personDatabase.size(); i ++){
+            if(personDatabase.get(i).getPersonType() == 't'){
+                Teacher temporary = new Teacher(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
+
+                for(int j = 0; j < courseDatabase.size(); j ++){
+                    if(courseDatabase.get(j).getTeacherInCharge().getUserName().equals(temporary.getUserName())){
+                        temporary.addCourse(courseDatabase.get(j));
+                    }
+                }
+                personDatabase.set(i, temporary);
+            }
+        }
     }
 
     private void openCourseDatabase() {
         String coursesFileName = "courses.txt";
         String fieldDelimiter = "#";
-        char lineDelimiter = '?';
         String currentLine;
         String[] course, person;
 

@@ -13,10 +13,10 @@ public class Teacher extends Person
 
     public boolean addCourse(Course newCourse){
         if(!coursesTaught.contains(newCourse)){
-            return false;
-        }else{
             coursesTaught.add(newCourse);
             return true;
+        }else{
+            return false;
         }
     }
 
@@ -65,4 +65,15 @@ public class Teacher extends Person
         return serverInput.nextLine();
     }
 
+    public boolean equals(Teacher aTeacher){
+        if(this.getUserName() == aTeacher.getUserName() && this.getPassword() == aTeacher.getPassword()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public ArrayList<Course> getCoursesTaught() {
+        return coursesTaught;
+    }
 }//Teacher
