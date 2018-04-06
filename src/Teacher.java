@@ -29,8 +29,8 @@ public class Teacher extends Person
         }
     }
 
-    public void createCourse(String code, String description, String serverIP){
-        Course newCourse = new Course(code, description,this , serverIP);
+    public void createCourse(String code, String description, String serverIP, ArrayList<Integer> courseWeights){
+        Course newCourse = new Course(code, description,this , serverIP, courseWeights);
         if(!coursesTaught.contains(newCourse)){
             coursesTaught.add(newCourse);
         }
