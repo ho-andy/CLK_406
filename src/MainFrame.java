@@ -60,8 +60,7 @@ public class MainFrame extends JFrame{
                         closePanel();
                     } else if (aPerson.getPersonType() == 't') {
                         badUser = false;
-
-                        JFrame teacherFrame = new TeacherFrame();
+                        JFrame teacherFrame = new TeacherFrame(aPerson);
                         teacherFrame.setVisible(true);
                         teacherFrame.setTitle("Teacher");
                         teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

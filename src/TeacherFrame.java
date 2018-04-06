@@ -10,10 +10,11 @@ public class TeacherFrame extends JFrame{
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
 
+    private Person loggedIn;
+
     public TeacherFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -23,6 +24,22 @@ public class TeacherFrame extends JFrame{
 
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
+    }
+
+    public TeacherFrame(Person person){
+        this.setSize(420, 747);
+        this.setLayout(new FlowLayout());
+
+        this.add(backButton);
+        backButton.addActionListener(new BackListener());
+
+        this.add(registerButton);
+        registerButton.addActionListener(new RegisterListener());
+
+        this.add(courseButton);
+        courseButton.addActionListener(new CourseListener());
+
+        loggedIn = person;
     }
 
     public void closePanel(){
@@ -44,7 +61,7 @@ public class TeacherFrame extends JFrame{
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherRegisterFrame = new TeacherRegisterFrame();
+            JFrame teacherRegisterFrame = new TeacherRegisterFrame(loggedIn);
             teacherRegisterFrame.setVisible(true);
             teacherRegisterFrame.setTitle("Register Course");
             teacherRegisterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,7 +72,7 @@ public class TeacherFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            JFrame teacherCourseFrame = new TeacherCourseFrame(loggedIn);
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
