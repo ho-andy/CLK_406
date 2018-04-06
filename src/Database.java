@@ -46,12 +46,13 @@ public class Database {
                 }//for
 
                 for(int i = 0; i < personDatabase.size(); i ++){
-                    if(personDatabase.get(i).getUserName().toUpperCase() == course[2].toUpperCase()){
-                        teacherInCharge = (Teacher)personDatabase.get(i);
+                    if((personDatabase.get(i).getUserName().toUpperCase()).equals(course[2].toUpperCase())){
+                        teacherInCharge = new Teacher(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
                     }
                 }
 
                 newCourse = new Course(course[0], teacherInCharge, course[1], courseWeights);
+                System.out.println(newCourse);
 
                 //PARSING STUDENT ROSTER
                 while(currentLine.charAt(0) != lineDelimiter){
