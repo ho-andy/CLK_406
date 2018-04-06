@@ -7,12 +7,14 @@ public class Course{
     private ArrayList<Student> studentRoster = new ArrayList<Student>();
     private Teacher teacherInCharge;
     private String serverIP;
+    private ArrayList<Integer> courseWeights;
 
-    public Course(String code, String description, Teacher teacherInCharge, String serverIP){
+    public Course(String code, String description, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights){
         this.code = code;
         this.description = description;
         this.teacherInCharge = teacherInCharge;
         this.serverIP = serverIP;
+        this.courseWeights = courseWeights;
     }//Course
 
     public String getCode(){
@@ -27,6 +29,10 @@ public class Course{
         return teacherInCharge;
     }//getTeacherInCharge
 
+    public ArrayList<Integer> getCourseWeights(){
+        return courseWeights;
+    }//getCourseWeights
+
     public void setCode(String newCode){
         code = newCode;
     }//setCode
@@ -38,6 +44,10 @@ public class Course{
     public void setTeacherInCharge(Teacher newTeacher){
         teacherInCharge = newTeacher;
     }//setTeacherInCharge
+
+    public void setCourseWeights(ArrayList<Integer> newCourseWeights){
+        courseWeights = newCourseWeights;
+    }//setCourseWeights
 
     public boolean addStudent(Student newStudent){
         if(!studentRoster.contains(newStudent)){
