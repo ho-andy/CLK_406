@@ -17,7 +17,7 @@ public class Database {
     private void openCourseDatabase() {
         String coursesFileName = "courses.txt";
         String fieldDelimiter = "#";
-        String lineDelimiter = "?";
+        char lineDelimiter = '?';
         String currentLine;
         String[] course, person;
 
@@ -28,7 +28,7 @@ public class Database {
 
         Student newStudent = null;
         Teacher teacherInCharge = null;
-        Course newCourse;
+        Course newCourse = null;
 
         try{
             scanner = new Scanner(new File(coursesFileName));
@@ -53,26 +53,25 @@ public class Database {
 
                 newCourse = new Course(course[0], teacherInCharge, course[1], courseWeights);
 
-                currentLine = scanner.nextLine();
-                //PARSING STUDENT ROSTER
-                while(!currentLine.equals(lineDelimiter)){
-                    person = currentLine.split(fieldDelimiter);
-                    newStudent = new Student(person[0], person[1]);
-                    currentRoster.add(newStudent);
-                    currentLine = scanner.nextLine();
+                while(scanner.hasNextLine()){
+                    String temp = scanner.nextLine().trim();
+                    if(temp.matches("\\?")) {
+                        break;
+                    } else {
+                        currentLine = temp;
+                        person = currentLine.split(fieldDelimiter);
+                        newStudent = new Student(person[0], person[1]);
+                        currentRoster.add(newStudent);
+                    }
                 }
-
-                newCourse.setStudentRoster(currentRoster);
-                courseDatabase.add(newCourse);
+                newCourse.setStudentRoster(new ArrayList<>(currentRoster));
 
                 currentFields.clear();
                 courseWeights.clear();
                 currentRoster.clear();
 
-                System.out.println(newCourse);
-
+                courseDatabase.add(newCourse);
             }//while
-
 
         } catch (FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Error in reading courses.txt file", "Error", JOptionPane.INFORMATION_MESSAGE);
