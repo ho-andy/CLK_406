@@ -1,14 +1,21 @@
 public class Person {
 
-    private String userName, password;
+    private String username, password;
+    private char personType;
 
     /**
      * Basic constructor for the Person Class
      * @param user Initialize userName
      * @param pass Initialize password
      */
+    public Person(String user, String pass, char type){
+        username = user;
+        password = pass;
+        personType = type;
+    }//Person
+
     public Person(String user, String pass){
-        userName = user;
+        username = user;
         password = pass;
     }//Person
 
@@ -17,7 +24,7 @@ public class Person {
      * @return userName
      */
     public String getUserName(){
-        return userName;
+        return username;
     }//getUserName
 
     /**
@@ -28,12 +35,16 @@ public class Person {
         return password;
     }//getPassword
 
+    public char getPersonType(){
+        return personType;
+    }
+
     /**
      * Simple setter method for the userName variable.
      * @param newUserName the new userName
      */
     public void setUserName(String newUserName){
-        userName = newUserName;
+        username = newUserName;
     }//setUserName
 
     /**
@@ -43,5 +54,9 @@ public class Person {
     public void setPassword(String newPassword){
         password = newPassword;
     }//setPassword
+
+    public void setPersonType(char newType){
+        personType = newType;
+    }
 
 }//Person

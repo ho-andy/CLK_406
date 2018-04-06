@@ -8,7 +8,7 @@ public class StudentCourseFrame extends JFrame{
     private JButton sessionButton = new JButton("Join Session");
 
     public StudentCourseFrame(){
-        this.setSize(420, 888);
+        this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
         this.add(backButton);
