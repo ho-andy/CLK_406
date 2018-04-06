@@ -40,6 +40,11 @@ public class TeacherSessionFrame extends JFrame{
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
+            /*
+                THEORETICAL CODE
+                Socket session = TeacherCourseFrame.server;
+                teacher.endSession(session);
+             */
         }
     }
 
@@ -51,6 +56,15 @@ public class TeacherSessionFrame extends JFrame{
             teacherQuestionFrame.setTitle("Questions");
             teacherQuestionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
+            /*
+                THEORETICAL CODE
+                Socket session = TeacherCourseFrame.server;
+                teacher.sendMessageThroughSession(session, question);
+                teacher.sendMessageThroughSession(session, choiceA);
+                teacher.sendMessageThroughSession(session, choiceB);
+                teacher.sendMessageThroughSession(session, choiceC);
+                teacher.sendMessageThroughSession(session, choiceD);
+             */
         }
     }
 
@@ -73,6 +87,12 @@ public class TeacherSessionFrame extends JFrame{
             teacherResultsFrame.setTitle("Results");
             teacherResultsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
+
+            /*
+                THEORETICAL CODE
+                Socket session = TeacherCourseFrame.server;
+                teacher.sendMessageThroughSession(session, result);
+             */
         }
     }
 }

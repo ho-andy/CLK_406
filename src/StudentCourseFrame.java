@@ -42,6 +42,10 @@ public class StudentCourseFrame extends JFrame{
             studentSessionFrame.setTitle("Session");
             studentSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
+            /*
+                THEORETICAL CODE
+                static Socket server = student.joinSession(course);
+             */
         }
     }
 }

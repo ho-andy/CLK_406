@@ -58,6 +58,14 @@ public class TeacherCourseFrame extends JFrame{
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
+            /*
+                THEORETICAL CODE
+                try{
+                    static Socket server = teacher.startSession(course);
+                }catch (IOException){
+                    JOptionPane.showMessageDialog(frame, "Could not connect to server", "IOException: Could not connect.", JOptionPane.ERROR_MESSAGE);
+                }
+             */
         }
     }
 }
