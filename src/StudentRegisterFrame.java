@@ -8,12 +8,9 @@ import java.awt.event.ActionListener;
 public class StudentRegisterFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
-    private MainFrame mainFrame;
-
-    public StudentRegisterFrame(MainFrame mainFrame){
+    public StudentRegisterFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-        this.mainFrame = mainFrame;
 
 
         this.add(backButton);
@@ -28,7 +25,7 @@ public class StudentRegisterFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame studentFrame = new StudentFrame(mainFrame);
+            JFrame studentFrame = new StudentFrame();
             studentFrame.setVisible(true);
             studentFrame.setTitle("Student");
             studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

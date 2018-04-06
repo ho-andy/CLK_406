@@ -7,13 +7,9 @@ import java.util.ArrayList;
 public class TeacherRosterFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
-    private MainFrame mainFrame;
-    private ArrayList<Person> database = mainFrame.database;
-
-    public TeacherRosterFrame(MainFrame mainFrame){
+    public TeacherRosterFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-        this.mainFrame = mainFrame;
 
 
         this.add(backButton);
@@ -28,7 +24,7 @@ public class TeacherRosterFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame(mainFrame);
+            JFrame teacherCourseFrame = new TeacherCourseFrame();
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
