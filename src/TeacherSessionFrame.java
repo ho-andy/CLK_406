@@ -9,10 +9,12 @@ public class TeacherSessionFrame extends JFrame{
     private JButton attendanceButton = new JButton("Attendance");
     private JButton resultsButton = new JButton("Results");
 
-    public TeacherSessionFrame(){
+    private MainFrame mainFrame;
+
+    public TeacherSessionFrame(MainFrame mainFrame){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-
+        this.mainFrame = mainFrame;
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -35,7 +37,7 @@ public class TeacherSessionFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            JFrame teacherCourseFrame = new TeacherCourseFrame(mainFrame);
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +48,7 @@ public class TeacherSessionFrame extends JFrame{
     class QuestionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherQuestionFrame = new TeacherQuestionFrame();
+            JFrame teacherQuestionFrame = new TeacherQuestionFrame(mainFrame);
             teacherQuestionFrame.setVisible(true);
             teacherQuestionFrame.setTitle("Questions");
             teacherQuestionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,7 +59,7 @@ public class TeacherSessionFrame extends JFrame{
     class AttendanceListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherAttendanceFrame = new TeacherAttendanceFrame();
+            JFrame teacherAttendanceFrame = new TeacherAttendanceFrame(mainFrame);
             teacherAttendanceFrame.setVisible(true);
             teacherAttendanceFrame.setTitle("Attendance");
             teacherAttendanceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +70,7 @@ public class TeacherSessionFrame extends JFrame{
     class ResultsListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherResultsFrame = new TeacherResultsFrame();
+            JFrame teacherResultsFrame = new TeacherResultsFrame(mainFrame);
             teacherResultsFrame.setVisible(true);
             teacherResultsFrame.setTitle("Results");
             teacherResultsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

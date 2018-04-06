@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 public class TeacherResultsFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
-    public TeacherResultsFrame(){
+    private MainFrame mainFrame;
+
+    public TeacherResultsFrame(MainFrame mainFrame){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-
+        this.mainFrame = mainFrame;
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -23,7 +25,7 @@ public class TeacherResultsFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherSessionFrame = new TeacherSessionFrame();
+            JFrame teacherSessionFrame = new TeacherSessionFrame(mainFrame);
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
