@@ -4,6 +4,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TeacherQuestionFrame extends JFrame{
+    private JTextArea qField = new JTextArea(3,35);
+    private JTextArea corrField = new JTextArea(3,35);
+    private JTextArea altFieldOne = new JTextArea(3,35);
+    private JTextArea altFieldTwo = new JTextArea(3,35);
+    private JTextArea altFieldThree = new JTextArea(3,35);
+
+    private JLabel qLabel = new JLabel("Question");
+    private JLabel corrLabel = new JLabel("Correct Answer");
+    private JLabel altLabelOne = new JLabel("Alternative Answer");
+    private JLabel altLabelTwo = new JLabel("Alternative Answer");
+    private JLabel altLabelThree = new JLabel("Alternative Answer");
+
+
+
+
+    private JButton addButton = new JButton("Add");
     private JButton backButton = new JButton("Back");
 
     private MainFrame mainFrame;
@@ -11,6 +27,19 @@ public class TeacherQuestionFrame extends JFrame{
     public TeacherQuestionFrame(MainFrame mainFrame){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
+
+        this.add(qLabel);
+        this.add(qField);
+        this.add(corrLabel);
+        this.add(corrField);
+        this.add(altLabelOne);
+        this.add(altFieldOne);
+        this.add(altLabelTwo);
+        this.add(altFieldTwo);
+        this.add(altLabelThree);
+        this.add(altFieldThree);
+        this.add(addButton);
+
         this.mainFrame = mainFrame;
 
         this.add(backButton);
