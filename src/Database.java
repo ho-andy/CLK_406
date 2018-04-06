@@ -28,7 +28,7 @@ public class Database {
 
         Student newStudent = null;
         Teacher teacherInCharge = null;
-        Course newCourse;
+        Course newCourse = null;
 
         try{
             scanner = new Scanner(new File(coursesFileName));
@@ -52,21 +52,26 @@ public class Database {
                 }
 
                 newCourse = new Course(course[0], teacherInCharge, course[1], courseWeights);
-                System.out.println(newCourse);
 
-                //PARSING STUDENT ROSTER
-                while(currentLine.charAt(0) != lineDelimiter){
-                    currentLine = scanner.nextLine();
-                    person = currentLine.split(fieldDelimiter);
-                    newStudent = new Student(person[0], person[1]);
-                    currentRoster.add(newStudent);
-                }//while
+                while(scanner.hasNextLine()){
+                    String temp = scanner.nextLine().trim();
+                    if(temp.matches("\\?")) {
+                        break;
+                    } else {
+                        currentLine = temp;
+                        person = currentLine.split(fieldDelimiter);
+                        newStudent = new Student(person[0], person[1]);
+                        currentRoster.add(newStudent);
+                    }
+                }
+                newCourse.setStudentRoster(new ArrayList<>(currentRoster));
 
-                newCourse.setStudentRoster(currentRoster);
+                currentFields.clear();
+                courseWeights.clear();
+                currentRoster.clear();
+
                 courseDatabase.add(newCourse);
-
             }//while
-
 
         } catch (FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Error in reading courses.txt file", "Error", JOptionPane.INFORMATION_MESSAGE);
