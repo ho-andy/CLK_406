@@ -8,6 +8,8 @@ public class TeacherSessionFrame extends JFrame{
     private JButton questionButton = new JButton("Ask Question");
     private JButton attendanceButton = new JButton("Attendance");
     private JButton resultsButton = new JButton("Results");
+
+    private Person loggedIn;
     private Poll poll = new Poll("Poll");
 
     public TeacherSessionFrame(){
@@ -27,6 +29,45 @@ public class TeacherSessionFrame extends JFrame{
         resultsButton.addActionListener(new ResultsListener());
     }
 
+    public TeacherSessionFrame(Person person){
+        this.setSize(420, 747);
+        this.setLayout(new FlowLayout());
+
+        this.add(backButton);
+        backButton.addActionListener(new BackListener());
+
+        this.add(questionButton);
+        questionButton.addActionListener(new QuestionListener());
+
+        this.add(attendanceButton);
+        attendanceButton.addActionListener(new AttendanceListener());
+
+        this.add(resultsButton);
+        resultsButton.addActionListener(new ResultsListener());
+
+        loggedIn = person;
+    }
+
+    public TeacherSessionFrame(Person person, Poll poll){
+        this.setSize(420, 747);
+        this.setLayout(new FlowLayout());
+
+        this.add(backButton);
+        backButton.addActionListener(new BackListener());
+
+        this.add(questionButton);
+        questionButton.addActionListener(new QuestionListener());
+
+        this.add(attendanceButton);
+        attendanceButton.addActionListener(new AttendanceListener());
+
+        this.add(resultsButton);
+        resultsButton.addActionListener(new ResultsListener());
+
+        this.loggedIn = person;
+        this.poll = poll;
+    }
+
     public void closePanel(){
         this.setVisible(false);
         this.dispose();
@@ -35,7 +76,7 @@ public class TeacherSessionFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherCourseFrame = new TeacherCourseFrame();
+            JFrame teacherCourseFrame = new TeacherCourseFrame(loggedIn);
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +92,7 @@ public class TeacherSessionFrame extends JFrame{
     class QuestionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherQuestionFrame = new TeacherQuestionFrame();
+            JFrame teacherQuestionFrame = new TeacherQuestionFrame(loggedIn, poll);
             teacherQuestionFrame.setVisible(true);
             teacherQuestionFrame.setTitle("Questions");
             teacherQuestionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +112,7 @@ public class TeacherSessionFrame extends JFrame{
     class AttendanceListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherAttendanceFrame = new TeacherAttendanceFrame();
+            JFrame teacherAttendanceFrame = new TeacherAttendanceFrame(loggedIn);
             teacherAttendanceFrame.setVisible(true);
             teacherAttendanceFrame.setTitle("Attendance");
             teacherAttendanceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +123,7 @@ public class TeacherSessionFrame extends JFrame{
     class ResultsListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherResultsFrame = new TeacherResultsFrame();
+            JFrame teacherResultsFrame = new TeacherResultsFrame(loggedIn, poll);
             teacherResultsFrame.setVisible(true);
             teacherResultsFrame.setTitle("Results");
             teacherResultsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
