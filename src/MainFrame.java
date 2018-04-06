@@ -50,15 +50,15 @@ public class MainFrame extends JFrame{
             boolean badUser = true;
 
             for (Person aPerson : roster) {
-                if (aPerson.getUserName().toLowerCase().equals(username) && aPerson.getPassword().equals(password)) {
-                    if (aPerson.getPersonType() == 's') {
+                if (aPerson.getUserName().toLowerCase().trim().equals(username) && aPerson.getPassword().trim().equals(password)) {
+                    if (aPerson instanceof Student) {
                         badUser = false;
                         JFrame studentFrame = new StudentFrame(aPerson);
                         studentFrame.setVisible(true);
                         studentFrame.setTitle("Student");
                         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         closePanel();
-                    } else if (aPerson.getPersonType() == 't') {
+                    } else if (aPerson instanceof Teacher) {
                         badUser = false;
                         JFrame teacherFrame = new TeacherFrame(aPerson);
                         teacherFrame.setVisible(true);
