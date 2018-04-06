@@ -15,4 +15,12 @@ public class Poll
     {
         this.poll.add(q);
     }
+    public void deleteQuestion(int n)
+    {
+        this.poll.remove(n+1);
+    }
+    public String getPollName()
+    {
+        return pollName;
+    }
 }

@@ -8,6 +8,7 @@ public class TeacherSessionFrame extends JFrame{
     private JButton questionButton = new JButton("Ask Question");
     private JButton attendanceButton = new JButton("Attendance");
     private JButton resultsButton = new JButton("Results");
+    private Poll poll = new Poll("Poll");
 
     public TeacherSessionFrame(){
         this.setSize(420, 747);
