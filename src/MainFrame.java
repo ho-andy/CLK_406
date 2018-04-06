@@ -15,6 +15,9 @@ public class MainFrame extends JFrame{
     private JTextField passField = new JTextField(35);
     private JButton loginButton = new JButton("Login");
 
+    private JButton teacherButton = new JButton("Teacher");
+    private JButton studentButton = new JButton("Student");
+
     public MainFrame(){
         openDatabase();
 
@@ -28,6 +31,11 @@ public class MainFrame extends JFrame{
         this.add(loginButton);
 
         loginButton.addActionListener(new LoginListener());
+
+        this.add(teacherButton);
+        teacherButton.addActionListener(new TeacherListener());
+        this.add(studentButton);
+        studentButton.addActionListener(new StudentListener());
     }
 
     public void closePanel(){
@@ -94,6 +102,27 @@ public class MainFrame extends JFrame{
         } catch (FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Error in reading file", "Error", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
+        }
+    }
+
+    class TeacherListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame teacherFrame = new TeacherFrame();
+            teacherFrame.setVisible(true);
+            teacherFrame.setTitle("Teacher");
+            teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            closePanel();
+        }
+    }
+    class StudentListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame studentFrame = new StudentFrame();
+            studentFrame.setVisible(true);
+            studentFrame.setTitle("Student");
+            studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            closePanel();
         }
     }
 }
