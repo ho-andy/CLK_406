@@ -2,13 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MainFrame extends JFrame{
-    public ArrayList<Person> database = new ArrayList<>();
+    private ArrayList<Person> roster;
 
     private JLabel userLabel = new JLabel("Username");
     private JTextField userField = new JTextField(35);
@@ -20,8 +17,6 @@ public class MainFrame extends JFrame{
     private JButton studentButton = new JButton("Student");
 
     public MainFrame(){
-        openDatabase();
-
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
@@ -32,6 +27,9 @@ public class MainFrame extends JFrame{
         this.add(loginButton);
 
         loginButton.addActionListener(new LoginListener());
+
+        Database database = new Database();
+        roster = database.getPersonDatabase();
 
         this.add(teacherButton);
         teacherButton.addActionListener(new TeacherListener());
@@ -51,7 +49,8 @@ public class MainFrame extends JFrame{
             String password = passField.getText();
             boolean badUser = true;
 
-            for (Person aPerson : database) {
+            for (Person aPerson : roster) {
+                System.out.println(aPerson);
                 if (aPerson.getUserName().toLowerCase().equals(username) && aPerson.getPassword().equals(password)) {
                     if (aPerson.getPersonType() == 's') {
                         badUser = false;
@@ -78,36 +77,6 @@ public class MainFrame extends JFrame{
                 JOptionPane.showMessageDialog(null, "Incorrect Username or Password", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }
-
-    public void openDatabase(){
-        String fieldDelimiter = "#";
-        String fileName = "roster.txt";
-        String currentLine;
-
-        String[] person;
-        Person newPerson;
-
-        Scanner scanner;
-
-        try{
-            scanner = new Scanner(new File(fileName));
-
-            while(scanner.hasNext()){
-                currentLine = scanner.nextLine();
-                person = currentLine.split(fieldDelimiter);
-                newPerson = new Person(person[0], person[1], person[2].charAt(0));
-                database.add(newPerson);
-            }
-
-        } catch (FileNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Error in reading file", "Error", JOptionPane.INFORMATION_MESSAGE);
-            System.exit(0);
-        }
-    }
-
-    public ArrayList<Person> getDatabase(){
-        return this.database;
     }
 
     class TeacherListener implements ActionListener {
