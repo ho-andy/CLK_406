@@ -36,9 +36,9 @@ public class TeacherQuestionFrame extends JFrame{
         this.add(altFieldTwo);
         this.add(altLabelThree);
         this.add(altFieldThree);
-        this.add(addButton);
-
         this.add(backButton);
+        this.add(addButton);
+        addButton.addActionListener(new AddListener());
         backButton.addActionListener(new BackListener());
     }
 
@@ -57,6 +57,7 @@ public class TeacherQuestionFrame extends JFrame{
         this.add(altLabelThree);
         this.add(altFieldThree);
         this.add(addButton);
+        addButton.addActionListener(new AddListener());
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -79,6 +80,7 @@ public class TeacherQuestionFrame extends JFrame{
         this.add(altLabelThree);
         this.add(altFieldThree);
         this.add(addButton);
+        addButton.addActionListener(new AddListener());
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -92,10 +94,32 @@ public class TeacherQuestionFrame extends JFrame{
         this.dispose();
     }
 
+    public void addQuestion()
+    {
+        Question q = new Question(qField.getText(),corrField.getText());
+        q.addAnswer(altFieldOne.getText(),false);
+        q.addAnswer(altFieldTwo.getText(),false);
+        q.addAnswer(altFieldThree.getText(),false);
+        poll.addQuestion(q);
+
+    }
+
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFrame teacherSessionFrame = new TeacherSessionFrame(loggedIn, poll);
+            teacherSessionFrame.setVisible(true);
+            teacherSessionFrame.setTitle("Session");
+            teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            closePanel();
+        }
+    }
+
+    class AddListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            addQuestion();
+            JFrame teacherSessionFrame = new TeacherSessionFrame(poll);
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
