@@ -1,5 +1,3 @@
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +13,7 @@ public class MainFrame extends JFrame{
     private JButton teacherButton = new JButton("Teacher");
 
     public MainFrame(){
-        this.setSize(420, 888);
+        this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
         this.add(userLabel);
