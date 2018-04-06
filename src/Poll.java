@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Poll
 {
     private String pollName;
+    private int numOfQs;
     private ArrayList<Question> poll = new ArrayList<Question>();
 
     public Poll(String name)
@@ -15,4 +16,9 @@ public class Poll
     {
         this.poll.add(q);
     }
+
+    public void deleteQuestion(Question q){
+
+    }
+
 }

@@ -7,7 +7,7 @@ public class TeacherRosterFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
     public TeacherRosterFrame(){
-        this.setSize(420, 888);
+        this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
 

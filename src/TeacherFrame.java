@@ -9,7 +9,7 @@ public class TeacherFrame extends JFrame{
     private JButton courseButton = new JButton("Course List");
 
     public TeacherFrame(){
-        this.setSize(420, 888);
+        this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
 
