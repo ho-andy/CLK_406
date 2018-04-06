@@ -1,26 +1,33 @@
-
 import java.util.ArrayList;
-//
+
 public class Question
 {
-    private ArrayList<String> answers = new ArrayList<String>();
     private String question;
-    private int correctAnswer;
+    private ArrayList<Answer> answerList = new ArrayList<>();
 
-    public Question(String question, int correctAnswer){
+    public Question(String question, String correctAnswer){
         this.question = question;
-        this.correctAnswer = correctAnswer;
+        answerList.add(new Answer(correctAnswer, true));
     }
 
-    public void addAnswer(){
-
+    public void addAnswer(String answer, boolean isCorrect){
+        if(answerList.size() > 5){
+            System.out.println("Answer List Full");
+        } else{
+            answerList.add(new Answer(answer, false));
+        }
     }
 
-    public void deleteAnswer(){
-
+    public String getQuestion() {
+        return question;
     }
 
-    public boolean checkAnswer(){
-        return true;
+    public String getCorrectAnswer(){
+        for(int i = 0; i < answerList.size(); i++){
+            if(answerList.get(i).isCorrect()){
+                return answerList.get(i).getAnswer();
+            }
+        }
+        return "";
     }
 }
