@@ -22,9 +22,8 @@ public class TeacherQuestionFrame extends JFrame{
     private JButton addButton = new JButton("Add");
     private JButton backButton = new JButton("Back");
 
-    private MainFrame mainFrame;
 
-    public TeacherQuestionFrame(MainFrame mainFrame){
+    public TeacherQuestionFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
@@ -40,8 +39,6 @@ public class TeacherQuestionFrame extends JFrame{
         this.add(altFieldThree);
         this.add(addButton);
 
-        this.mainFrame = mainFrame;
-
         this.add(backButton);
         backButton.addActionListener(new BackListener());
     }
@@ -54,7 +51,7 @@ public class TeacherQuestionFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherSessionFrame = new TeacherSessionFrame(mainFrame);
+            JFrame teacherSessionFrame = new TeacherSessionFrame();
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

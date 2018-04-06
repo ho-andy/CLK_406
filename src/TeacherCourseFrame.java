@@ -9,13 +9,9 @@ public class TeacherCourseFrame extends JFrame{
     private JButton rosterButton = new JButton("Class Roster");
     private JButton sessionButton = new JButton("Start Session");
 
-    private MainFrame mainFrame;
-
-
-    public TeacherCourseFrame(MainFrame mainFrame){
+    public TeacherCourseFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
-        this.mainFrame = mainFrame;
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -39,7 +35,7 @@ public class TeacherCourseFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherFrame = new TeacherFrame(mainFrame);
+            JFrame teacherFrame = new TeacherFrame();
             teacherFrame.setVisible(true);
             teacherFrame.setTitle("Teacher");
             teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +46,7 @@ public class TeacherCourseFrame extends JFrame{
     class RosterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherRosterFrame = new TeacherRosterFrame(mainFrame);
+            JFrame teacherRosterFrame = new TeacherRosterFrame();
             teacherRosterFrame.setVisible(true);
             teacherRosterFrame.setTitle("Roster");
             teacherRosterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +57,7 @@ public class TeacherCourseFrame extends JFrame{
     class SessionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherSessionFrame = new TeacherSessionFrame(mainFrame);
+            JFrame teacherSessionFrame = new TeacherSessionFrame();
             teacherSessionFrame.setVisible(true);
             teacherSessionFrame.setTitle("Session");
             teacherSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
