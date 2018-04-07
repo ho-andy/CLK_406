@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class TeacherRegisterFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
-    private Person loggedIn;
+    private Teacher loggedIn;
 
     public TeacherRegisterFrame(){
         this.setSize(420, 747);
@@ -16,7 +16,7 @@ public class TeacherRegisterFrame extends JFrame{
         backButton.addActionListener(new BackListener());
     }
 
-    public TeacherRegisterFrame(Person person){
+    public TeacherRegisterFrame(Teacher person){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 

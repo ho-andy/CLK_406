@@ -7,42 +7,63 @@ public class TeacherFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton registerButton = new JButton("Register Course");
     private JButton courseButton = new JButton("Course List");
+    private JComboBox courseBox = new JComboBox();
+    private Teacher teacher;
 
 
     public TeacherFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
+        addCourses();
+
         this.add(backButton);
         backButton.addActionListener(new BackListener());
 
         this.add(registerButton);
         registerButton.addActionListener(new RegisterListener());
 
+        this.add(courseBox);
+
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
+
     }
 
-    public TeacherFrame(Person person){
+    public TeacherFrame(Teacher person){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
+        Currents.TEACHER = new Teacher(person.getUserName(), person.getPassword());
+        teacher = person;
+
         this.add(backButton);
         backButton.addActionListener(new BackListener());
 
         this.add(registerButton);
         registerButton.addActionListener(new RegisterListener());
 
+        this.add(courseBox);
+
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
+        addCourses();
 
-        Currents.TEACHER = new Teacher(person.getUserName(), person.getPassword());
-        //Current.COURSE =
+
     }
 
     public void closePanel(){
         this.setVisible(false);
         this.dispose();
+    }
+
+    public void addCourses()
+    {
+
+        for(int i = 0; i < teacher.getCoursesTaught().size();i++)
+        {
+            courseBox.addItem(teacher.getCoursesTaught().get(i).getCode());
+        }
     }
 
     class BackListener implements ActionListener {
