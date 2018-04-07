@@ -7,6 +7,8 @@ import java.util.Scanner;
 //String code, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
+    private ArrayList<Student> studentDatabase = new ArrayList<>();
+    private ArrayList<Teacher> teacherDatabase = new ArrayList<>();
     private ArrayList<Course> courseDatabase = new ArrayList<>();
 
     public Database(){
@@ -26,6 +28,14 @@ public class Database {
             }else if(personDatabase.get(i).getPersonType() == 's'){
                 Student temporary = new Student(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
                 personDatabase.set(i, temporary);
+            }
+        }
+
+        for(int i = 0; i < personDatabase.size(); i++){
+            if(personDatabase.get(i) instanceof Teacher){
+                teacherDatabase.add((Teacher) personDatabase.get(i));
+            } else if(personDatabase.get(i) instanceof Student){
+                studentDatabase.add((Student) personDatabase.get(i));
             }
         }
     }
