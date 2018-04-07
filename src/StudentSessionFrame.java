@@ -66,13 +66,13 @@ public class StudentSessionFrame extends JFrame{
 
         this.add(questionLabel);
 
-        questionLabel.setText("Wagwan fam?");
+        questionLabel.setText("Sample question");
 
-        JRadioButton answer1 = new JRadioButton("nm fam");
-        JRadioButton answer2 = new JRadioButton("soft tings");
-        JRadioButton answer3 = new JRadioButton("yknow stuff");
-        JRadioButton answer4 = new JRadioButton("chilling with the boys");
-        JRadioButton answer5 = new JRadioButton("just chillin");
+        JRadioButton answer1 = new JRadioButton("Correct answer");
+        JRadioButton answer2 = new JRadioButton("Incorrect answer");
+        JRadioButton answer3 = new JRadioButton("Also incorrect");
+        JRadioButton answer4 = new JRadioButton("Not quite correct");
+        JRadioButton answer5 = new JRadioButton("Just plain wrong");
 
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(answer1);

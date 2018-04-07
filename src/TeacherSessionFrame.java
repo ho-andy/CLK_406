@@ -49,7 +49,6 @@ public class TeacherSessionFrame extends JFrame{
 
         this.add(resultsButton);
         resultsButton.addActionListener(new ResultsListener());
-        this.add(testButton);
         testButton.addActionListener(new TestListener());
     }
 
