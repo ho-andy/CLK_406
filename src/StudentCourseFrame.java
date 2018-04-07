@@ -42,7 +42,7 @@ public class StudentCourseFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame studentFrame = new StudentFrame(loggedIn);
+            JFrame studentFrame = new StudentFrame();
             studentFrame.setVisible(true);
             studentFrame.setTitle("Student");
             studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +53,7 @@ public class StudentCourseFrame extends JFrame{
     class SessionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame studentSessionFrame = new StudentSessionFrame(loggedIn);
+            JFrame studentSessionFrame = new StudentSessionFrame();
             studentSessionFrame.setVisible(true);
             studentSessionFrame.setTitle("Session");
             studentSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

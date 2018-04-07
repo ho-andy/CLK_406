@@ -58,7 +58,6 @@ public class StudentFrame extends JFrame{
 
     public void addCourses()
     {
-        System.out.println("hi");
         for(int i = 0; i < Currents.STUDENT.getCoursesEnrolled().size();i++)
         {
             courseBox.addItem(Currents.STUDENT.getCoursesEnrolled().get(i).getCode());

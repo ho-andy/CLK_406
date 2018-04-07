@@ -35,7 +35,7 @@ public class StudentRegisterFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame studentFrame = new StudentFrame(loggedIn);
+            JFrame studentFrame = new StudentFrame();
             studentFrame.setVisible(true);
             studentFrame.setTitle("Student");
             studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
