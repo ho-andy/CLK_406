@@ -65,7 +65,7 @@ public class MainFrame extends JFrame{
                         if(p.getUserName().equals(studentRoster.get(i).getUserName().toLowerCase()))
                         {
                             badUser = false;
-                            JFrame studentFrame = new StudentFrame(p);
+                            JFrame studentFrame = new StudentFrame(studentRoster.get(i));
                             studentFrame.setVisible(true);
                             studentFrame.setTitle("Student");
                             studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

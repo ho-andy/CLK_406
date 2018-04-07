@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class StudentRegisterFrame extends JFrame{
     private JButton backButton = new JButton("Back");
 
-    private Person loggedIn;
+    private Student loggedIn;
 
     public StudentRegisterFrame(){
         this.setSize(420, 747);
@@ -17,7 +17,7 @@ public class StudentRegisterFrame extends JFrame{
         backButton.addActionListener(new BackListener());
     }
 
-    public StudentRegisterFrame(Person person){
+    public StudentRegisterFrame(Student person){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
@@ -25,7 +25,6 @@ public class StudentRegisterFrame extends JFrame{
         backButton.addActionListener(new BackListener());
 
         loggedIn = person;
-        System.out.println(loggedIn);
     }
 
     public void closePanel(){
