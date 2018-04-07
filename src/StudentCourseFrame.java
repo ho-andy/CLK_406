@@ -55,7 +55,7 @@ public class StudentCourseFrame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             JFrame studentSessionFrame = new StudentSessionFrame();
             studentSessionFrame.setVisible(true);
-            studentSessionFrame.setTitle("Session");
+            studentSessionFrame.setTitle("Session");//
             studentSessionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             closePanel();
             /*
