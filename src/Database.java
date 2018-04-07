@@ -7,6 +7,23 @@ import java.util.Scanner;
 //String code, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
+
+    public ArrayList<Student> getStudentDatabase() {
+        return studentDatabase;
+    }
+
+    public void setStudentDatabase(ArrayList<Student> studentDatabase) {
+        this.studentDatabase = studentDatabase;
+    }
+
+    public ArrayList<Teacher> getTeacherDatabase() {
+        return teacherDatabase;
+    }
+
+    public void setTeacherDatabase(ArrayList<Teacher> teacherDatabase) {
+        this.teacherDatabase = teacherDatabase;
+    }
+
     private ArrayList<Student> studentDatabase = new ArrayList<>();
     private ArrayList<Teacher> teacherDatabase = new ArrayList<>();
     private ArrayList<Course> courseDatabase = new ArrayList<>();
