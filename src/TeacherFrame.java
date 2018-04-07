@@ -6,9 +6,8 @@ import java.awt.event.ActionListener;
 public class TeacherFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton registerButton = new JButton("Register Course");
-    private JButton courseButton = new JButton("Course List");
+    private JButton courseButton = new JButton("Select Course");
     private JComboBox courseBox = new JComboBox();
-    private Teacher teacher;
 
 
     public TeacherFrame(){
@@ -34,8 +33,7 @@ public class TeacherFrame extends JFrame{
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
-        Currents.TEACHER = new Teacher(person.getUserName(), person.getPassword());
-        teacher = person;
+        Currents.TEACHER = person;
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -60,9 +58,9 @@ public class TeacherFrame extends JFrame{
     public void addCourses()
     {
 
-        for(int i = 0; i < teacher.getCoursesTaught().size();i++)
+        for(int i = 0; i < Currents.TEACHER.getCoursesTaught().size();i++)
         {
-            courseBox.addItem(teacher.getCoursesTaught().get(i).getCode());
+            courseBox.addItem(Currents.TEACHER.getCoursesTaught().get(i).getCode());
         }
     }
 
@@ -91,6 +89,13 @@ public class TeacherFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            for(int i = 0; i < Currents.TEACHER.getCoursesTaught().size();i++)
+            {
+                if(courseBox.getSelectedItem().equals(Currents.TEACHER.getCoursesTaught().get(i).getCode()))
+                {
+                    Currents.COURSE = Currents.TEACHER.getCoursesTaught().get(i);
+                }
+            }
             JFrame teacherCourseFrame = new TeacherCourseFrame();
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
