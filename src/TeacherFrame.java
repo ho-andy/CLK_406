@@ -100,7 +100,7 @@ public class TeacherFrame extends JFrame{
             teacherCourseFrame.setVisible(true);
             teacherCourseFrame.setTitle("Course List");
             teacherCourseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            closePanel();
+            closePanel();//
         }
     }
 }
