@@ -60,8 +60,6 @@ public class MainFrame extends JFrame{
                 if (p.getUserName().toLowerCase().trim().equals(username) && p.getPassword().trim().equals(password)) {
                     for(int i = 0; i<teacherRoster.size();i++)
                     {
-                        System.out.println(p.getUserName() + " " + teacherRoster.get(i).getUserName().toLowerCase());
-
                         if(p.getUserName().equals(teacherRoster.get(i).getUserName().toLowerCase()))
                         {
 
