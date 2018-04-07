@@ -7,7 +7,7 @@ public class StudentCourseFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton sessionButton = new JButton("Join Session");
 
-    private Person loggedIn;
+    private Student loggedIn;
 
     public StudentCourseFrame(){
         this.setSize(420, 747);
@@ -18,9 +18,10 @@ public class StudentCourseFrame extends JFrame{
 
         this.add(sessionButton);
         sessionButton.addActionListener(new SessionListener());
+        System.out.println(Currents.SCOURSE.getCode());
     }
 
-    public StudentCourseFrame(Person person){
+    public StudentCourseFrame(Student person){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
@@ -31,7 +32,6 @@ public class StudentCourseFrame extends JFrame{
         sessionButton.addActionListener(new SessionListener());
 
         loggedIn = person;
-        System.out.println(loggedIn);
     }
 
     public void closePanel(){

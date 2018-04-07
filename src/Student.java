@@ -35,6 +35,10 @@ public class Student extends Person{
         }
     }
 
+    public ArrayList<Course> getCoursesEnrolled() {
+        return coursesEnrolled;
+    }
+
     public Socket joinSession(Course course) throws IOException {
         String serverIP = course.getLocalIP();
         int serverPort = course.getCode().hashCode();

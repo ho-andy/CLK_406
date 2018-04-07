@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 public class StudentFrame extends JFrame{
     private JButton backButton = new JButton("Back");
     private JButton registerButton = new JButton("Register Course");
-    private JButton courseButton = new JButton("Course List");
+    private JButton courseButton = new JButton("Select Course");
+    private JComboBox courseBox = new JComboBox();
 
-    private Person loggedIn;
+
+    private Student loggedIn;
 
     public StudentFrame(){
         this.setSize(420, 747);
@@ -20,13 +22,17 @@ public class StudentFrame extends JFrame{
         this.add(registerButton);
         registerButton.addActionListener(new RegisterListener());
 
+        this.add(courseBox);
+
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
     }
 
-    public StudentFrame(Person person){
+    public StudentFrame(Student person){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
+
+        addCourses();
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -35,12 +41,23 @@ public class StudentFrame extends JFrame{
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
 
-        loggedIn = person;
+        Currents.STUDENT = person;
+
+        System.out.println(loggedIn);
     }
 
     public void closePanel(){
         this.setVisible(false);
         this.dispose();
+    }
+
+    public void addCourses()
+    {
+
+        for(int i = 0; i < Currents.STUDENT.getCoursesEnrolled().size();i++)
+        {
+            courseBox.addItem(Currents.STUDENT.getCoursesEnrolled().get(i).getCode());
+        }
     }
 
     class BackListener implements ActionListener {
@@ -68,7 +85,16 @@ public class StudentFrame extends JFrame{
     class CourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame courseFrame = new StudentCourseFrame(loggedIn);
+
+            for(int i = 0; i < Currents.STUDENT.getCoursesEnrolled().size();i++)
+            {
+                if(courseBox.getSelectedItem().equals(Currents.STUDENT.getCoursesEnrolled().get(i).getCode()))
+                {
+                    Currents.SCOURSE = Currents.STUDENT.getCoursesEnrolled().get(i);
+                }
+            }
+
+            JFrame courseFrame = new StudentCourseFrame();
             courseFrame.setVisible(true);
             courseFrame.setTitle("Course List");
             courseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
