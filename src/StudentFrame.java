@@ -15,6 +15,7 @@ public class StudentFrame extends JFrame{
     public StudentFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
+        addCourses();
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -32,16 +33,20 @@ public class StudentFrame extends JFrame{
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
 
-        addCourses();
+        Currents.STUDENT = person;
+
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
         this.add(registerButton);
         registerButton.addActionListener(new RegisterListener());
+
+
+        this.add(courseBox);
+
         this.add(courseButton);
         courseButton.addActionListener(new CourseListener());
 
-        Currents.STUDENT = person;
 
         System.out.println(loggedIn);
     }
