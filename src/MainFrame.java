@@ -10,7 +10,7 @@ public class MainFrame extends JFrame{
     private JLabel userLabel = new JLabel("Username");
     private JTextField userField = new JTextField(35);
     private JLabel passLabel = new JLabel("Password");
-    private JTextField passField = new JTextField(35);
+    private JTextField passField = new JPasswordField(35);
     private JButton loginButton = new JButton("Login");
 
     private JButton teacherButton = new JButton("Teacher");
