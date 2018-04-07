@@ -34,7 +34,7 @@ public class TeacherRegisterFrame extends JFrame{
     class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame teacherFrame = new TeacherFrame(loggedIn);
+            JFrame teacherFrame = new TeacherFrame();
             teacherFrame.setVisible(true);
             teacherFrame.setTitle("Teacher");
             teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
