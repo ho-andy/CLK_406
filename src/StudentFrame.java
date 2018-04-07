@@ -34,7 +34,7 @@ public class StudentFrame extends JFrame{
         this.setLayout(new FlowLayout());
 
         Currents.STUDENT = person;
-
+        addCourses();
 
         this.add(backButton);
         backButton.addActionListener(new BackListener());
@@ -58,7 +58,7 @@ public class StudentFrame extends JFrame{
 
     public void addCourses()
     {
-
+        System.out.println("hi");
         for(int i = 0; i < Currents.STUDENT.getCoursesEnrolled().size();i++)
         {
             courseBox.addItem(Currents.STUDENT.getCoursesEnrolled().get(i).getCode());
