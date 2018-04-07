@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-//String code, Teacher teacherInCharge, String serverIP, ArrayList<Integer> courseWeights
+
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
 
@@ -44,6 +44,13 @@ public class Database {
                 personDatabase.set(i, temporary);
             }else if(personDatabase.get(i).getPersonType() == 's'){
                 Student temporary = new Student(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
+
+                for(int j = 0; j < courseDatabase.size(); j ++){
+                    if(courseDatabase.get(j).getStudentRoster().contains(temporary)){
+                        temporary.addCourse(courseDatabase.get(j));
+                    }
+                }
+
                 personDatabase.set(i, temporary);
             }
         }
