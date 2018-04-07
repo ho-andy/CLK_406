@@ -36,7 +36,6 @@ public class StudentFrame extends JFrame{
         courseButton.addActionListener(new CourseListener());
 
         loggedIn = person;
-        System.out.println(loggedIn);
     }
 
     public void closePanel(){

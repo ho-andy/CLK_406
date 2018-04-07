@@ -16,9 +16,6 @@ public class MainFrame extends JFrame{
     private JTextField passField = new JPasswordField(35);
     private JButton loginButton = new JButton("Login");
 
-    private JButton teacherButton = new JButton("Teacher");
-    private JButton studentButton = new JButton("Student");
-
     public MainFrame(){
         this.setSize(420, 747);
         this.setLayout(new FlowLayout());
@@ -29,19 +26,12 @@ public class MainFrame extends JFrame{
         this.add(passField);
         this.add(loginButton);
 
-
         loginButton.addActionListener(new LoginListener());
 
         Database database = new Database();
         roster = database.getPersonDatabase();
         teacherRoster = database.getTeacherDatabase();
         studentRoster = database.getStudentDatabase();
-
-
-        this.add(teacherButton);
-        teacherButton.addActionListener(new TeacherListener());
-        this.add(studentButton);
-        studentButton.addActionListener(new StudentListener());
     }
 
     public void closePanel(){
@@ -62,7 +52,6 @@ public class MainFrame extends JFrame{
                     {
                         if(p.getUserName().equals(teacherRoster.get(i).getUserName().toLowerCase()))
                         {
-
                             badUser = false;
                             JFrame teacherFrame = new TeacherFrame(teacherRoster.get(i));
                             teacherFrame.setVisible(true);
@@ -90,27 +79,6 @@ public class MainFrame extends JFrame{
             if(badUser) {
                 JOptionPane.showMessageDialog(null, "Incorrect Username or Password", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
-        }
-    }
-
-    class TeacherListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JFrame teacherFrame = new TeacherFrame();
-            teacherFrame.setVisible(true);
-            teacherFrame.setTitle("Teacher");
-            teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            closePanel();
-        }
-    }
-    class StudentListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JFrame studentFrame = new StudentFrame();
-            studentFrame.setVisible(true);
-            studentFrame.setTitle("Student");
-            studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            closePanel();
         }
     }
 }
