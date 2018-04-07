@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//
 public class Database {
     private ArrayList<Person> personDatabase = new ArrayList<>();
 
@@ -46,11 +46,14 @@ public class Database {
                 Student temporary = new Student(personDatabase.get(i).getUserName(), personDatabase.get(i).getPassword());
 
                 for(int j = 0; j < courseDatabase.size(); j ++){
-                    if(courseDatabase.get(j).getStudentRoster().contains(temporary)){
-                        temporary.addCourse(courseDatabase.get(j));
+                    ArrayList<Student> studentRoster = courseDatabase.get(j).getStudentRoster();
+                    for(int k = 0; k < studentRoster.size(); k ++){
+                        if(studentRoster.get(k).getUserName().equals(temporary.getUserName()) && studentRoster.get(k).getPassword().equals(temporary.getPassword())){
+                            temporary.addCourse(courseDatabase.get(j));
+                            break;
+                        }
                     }
                 }
-
                 personDatabase.set(i, temporary);
             }
         }
